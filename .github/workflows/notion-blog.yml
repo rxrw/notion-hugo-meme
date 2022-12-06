@@ -1,0 +1,34 @@
+name: notion-blog
+on:
+  # On pull requests commits
+  # Automatic trigger at 00:00 everyday
+  schedule:
+    - cron: "0 */2 * * *" # daily
+  # Manual trigger
+  workflow_dispatch:
+jobs:
+  auto-sync-from-notion-to-github:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        # Make sure the actual branch is checked out when running on pull
+        # requests. Enable this if using "on: pull_request".
+        # with:
+          # ref: ${{ github.head_ref }}
+
+      - name: notion-blog
+        uses: rxrw/notion-blog@master
+        env:
+          # You need to generate an Integration token in Notion API page
+          NOTION_SECRET : ${{ secrets.NOTION_SECRET }}
+
+      - name: Format documents
+        # We need prettier in order to commit the new files, and also it gives a
+        # better look to the Markdown.
+        uses: creyD/prettier_action@v3.1
+        with:
+          prettier_options: --write ./content/zh/**/*.md
+          commit_message: 'notion-blog: update articles (auto)'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
