@@ -1,47 +1,47 @@
 ##########################################
 # 站点配置
 
-baseURL = "https://rxrw.me/"
-title = "若星若望__"
+baseURL = "https://example.com/"
+title = "Hugo 主题 MemE"
 languageCode = "zh-CN"
 hasCJKLanguage = true
 # 版权信息（支持 Markdown）
-copyright = "Copyright [RXRW.ME](https://rxrw.me) with Heartbeat. All rights reserved."
+copyright = "[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)"
 
 # 主题选择
 theme = "meme"
 
 # `hugo new` 新建文章自动打开的文本编辑器
-newContentEditor = "code"
+newContentEditor = ""
 
 # i18n
 defaultContentLanguage = "zh"
 defaultContentLanguageInSubdir = false
 
 # 是否复数化列表页面的标题
-pluralizeListTitles = true
+pluralizeListTitles = false
 
 # 摘要的字数限制
 summaryLength = 42
 
 # 是否开启 GitHub 风格的 Emoji 书写方式
-enableEmoji = true
+enableEmoji = false
 
 # 脚注的返回链接中的文本
 footnoteReturnLinkContents = "↩"
 
 # 是否启用 Git 版本信息
-enableGitInfo = true
+enableGitInfo = false
 
 # 是否生成 robots.txt 文件
 enableRobotsTXT = true
 
 # 每一分页的文章数（仅对「文章摘要」首页布局有效）
-paginate = 10
+paginate = 5
 
 # URL 相关
 disablePathToLower = false
-relativeURLs = true
+relativeURLs = false
 uglyURLs = false
 
 # URL 结构
@@ -69,7 +69,7 @@ uglyURLs = false
             strikethrough = true
             table = true
             taskList = true
-            typographer = true
+            typographer = false
         [markup.goldmark.parser]
             attribute = true
             autoHeadingID = true
@@ -80,7 +80,7 @@ uglyURLs = false
             xHTML = false
     [markup.highlight]
         codeFences = true
-        guessSyntax = true
+        guessSyntax = false
         lineNos = true
         lineNumbersInTable = true
         noClasses = false
@@ -91,26 +91,26 @@ uglyURLs = false
 
 # 压缩 HTML
 [minify.tdewolff.html]
-    keepWhitespace = true
+    keepWhitespace = false
 
 # 作者信息
 [author]
     # 名字
-    name = "纠结当道"
+    name = "reuixiy"
     # 邮箱
-    email = "rxrw@me.com"
+    email = "reuixiy@gmail.com"
     # 座右铭或简介
-    motto = "啊这"
+    motto = "Viva La Vida"
     # 头像
     avatar = "/icons/apple-touch-icon.png"
     # 网站（默认值：baseURL）
-    website = "https://rxrw.me/"
+    website = "https://io-oi.me/"
     # 推特
-    twitter = "reprover"
+    twitter = "reuixiy"
 
 # 相关文章
 [related]
-    threshold = 90
+    threshold = 80
     includeNewer = true
     toLower = true
     [[related.indices]]
@@ -143,17 +143,18 @@ uglyURLs = false
     mediaType = "application/json"
     baseName = "search"
 
-# algolia 的搜索索引
+# Algolia 的搜索索引
 [outputFormats.Algolia]
+    mediaType = "application/json"
     baseName = "algolia"
     isPlainText = true
-    mediaType = "application/json"
     notAlternative = true
 
 # Hugo 的输出控制
 [outputs]
     page = ["HTML"]
-    home = ["HTML", "SectionsAtom", "SectionsRSS", "SearchIndex", "Algolia"]
+    # home = ["HTML", "SectionsAtom", "SectionsRSS", "SearchIndex", "Algolia"]
+    home = ["HTML", "SectionsAtom", "SectionsRSS"]
     section = ["HTML"]
     taxonomy = ["HTML"]
     term = ["HTML"]
@@ -176,7 +177,7 @@ uglyURLs = false
 # 4. links      链接栏（关于页面的极简页脚）
 
 # 菜单内的配置说明如下：
-# url           链接地址
+# pageref/url   内链地址/外链地址
 # name          文本（留空（""）则无）
 # weight        位置
 # pre           内链（internal）或外链（external）
@@ -187,57 +188,47 @@ uglyURLs = false
 #               `lang-switcher`、`search`）
 
 [menu]
-    # Menu bar
+    ## 菜单栏
+    # [[menu.main]]
+    #     pageref = "/"
+    #     name = "首页"
+    #     weight = 1
+    #     pre = "internal"
+    #     post = "home"
     [[menu.main]]
-        pageref = "/"
-        name = "首页"
-        weight = 1
-        pre = "internal"
-        post = "home"
-    [[menu.main]]
-        pageref = "/essay/"
-        name = "随笔"
+        pageref = "/posts/"
+        name = "文章"
         weight = 2
         pre = "internal"
-        post = "note"
-        identifier = "essay"
-    # [[menu.main]]
-    #     url = "/hope/"
-    #     name = "希望"
-    #     weight = 4
-    #     pre = "internal"
-    #     post = "gem"
-    #     identifier = "archive"
+        post = "archive"
     [[menu.main]]
-        pageref = "/tech/"
-        name = "技术"
-        weight = 5
+        pageref = "/categories/"
+        name = "分类"
+        weight = 3
         pre = "internal"
-        post = "code"
-        # identifier = "icon"
+        post = "th"
     [[menu.main]]
-        pageref = "/travel/"
-        name = "出游"
-        weight = 6
+        pageref = "/tags/"
+        name = "标签"
+        weight = 4
         pre = "internal"
-        post = "route"
-        # identifier = "icon"
+        post = "tags"
     [[menu.main]]
         pageref = "/about/"
         name = "关于"
-        weight = 7
+        weight = 5
         pre = "internal"
-        post = "question"
+        post = "user-circle"
     [[menu.main]]
-        weight = 8
+        weight = 6
         identifier = "theme-switcher"
+    [[menu.main]]
+        weight = 7
+        identifier = "lang-switcher"
     # [[menu.main]]
     #     weight = 8
-    #     identifier = "lang-switcher"
-    [[menu.main]]
-        weight = 9
-        identifier = "search"
-        post = "search"
+    #     identifier = "search"
+    #     post = "search"
 
 
 
@@ -252,7 +243,7 @@ uglyURLs = false
     enableHeader = true
 
     # 是否自动隐藏
-    enableHeaderAutoHide = true
+    enableHeaderAutoHide = false
     # 说明：仅对弹性布局的顶栏有效
 
     # 是否在首页显示
@@ -278,11 +269,11 @@ uglyURLs = false
     # 品牌栏（在顶栏内）
 
     # 是否使用 SVG 图片
-    siteBrandSVG = true
+    siteBrandSVG = false
     # 如果是，请将你的 SVG 放到 `SVG.toml` 文
     # 件内，并配置以下项。单位：px。
-    siteBrandSVGWidth = 120
-    siteBrandSVGHeight = 32
+    siteBrandSVGWidth = 250
+    siteBrandSVGHeight = 100
     siteBrandSVGFill = "#fff"
     # 如果否，则会使用你的站点标题作为默认值，并
     # 以文字的形式显示，下方可配置字号和字色。字
@@ -303,7 +294,7 @@ uglyURLs = false
     # 说明：对弹性布局的顶栏无效
 
     # 是否按文章分区高亮当前菜单项
-    activeInSection = true
+    activeInSection = false
     # 说明：如果开启，那么当某一文章的分区名是某
     #      一菜单项中的 `url` 时，该文章页面中
     #      的该菜单项也会被高亮
@@ -318,13 +309,13 @@ uglyURLs = false
     # 3. posts     文章摘要
     # 4. page      普通页面
 
-    homeLayout = "poetry"
+    homeLayout = "posts"
 
     ## 「诗意人生」
     # 诗句，支持 Markdown
-    homePoetry = ["星星✨", "姓名", "心境❤️", "和相信🌛"]
+    homePoetry = []
     # 底部链接的内间距，单位：em
-    homeLinksPadding = 2
+    homeLinksPadding = 1
 
     ## 「视频片段」
     homePoster = ""
@@ -344,19 +335,20 @@ uglyURLs = false
 
     # 站点的 LOGO
     siteLogo = "/icons/apple-touch-icon.png"
-    # Note: used for JSON-LD, Open Graph
+    # 说明：用于 JSON-LD、Open Graph
 
     # 站点的描述
-    siteDescription = "流动的水没有形状，漂流的风找不到踪迹"
+    siteDescription = "MemE 是一个强大且可高度定制的 GoHugo 博客主题，专为个人博客设计。"
     # 说明：用于 HTML 的头部元数据、JSON-LD、
     #      Open Graph、Atom、RSS
 
-    siteCreatedTime = "2010-08-04T11:24:43+08:00"
-    # ATTENTION: keep this format, change
-    #            the number
+    # 站点的创建时间
+    siteCreatedTime = "1969-07-20T20:17:43+00:00"
+    # 注意：请保持此格式，更改数字
 
-    siteTwitter = "reprover"
-    # Note: used for Twitter Cards
+    # 站点的推特帐号
+    siteTwitter = "reuixiy"
+    # 说明：用于 Twitter Cards
 
 
     ######################################
@@ -394,7 +386,7 @@ uglyURLs = false
     # `sections`，则无法关闭树状布局
 
     # 是否显示文章标题
-    displayPosts = false
+    displayPosts = true
 
     # 是否显示每一分类下的文章数
     displayPostsCount = true
@@ -411,7 +403,7 @@ uglyURLs = false
     # 字号单位
     fontUnit = "em"
     # 最大字号
-    largestFontSize = 2
+    largestFontSize = 2.5
     # 最小字号
     smallestFontSize = 1
 
@@ -420,7 +412,7 @@ uglyURLs = false
     # 列表页面
 
     # 宽度
-    listWidth = 54
+    listWidth = 36
     # 说明：如果留空（""），则用 42 作为默认值
     #      单位：em
 
@@ -428,7 +420,7 @@ uglyURLs = false
     displayListTitle = true
 
     # 日期的格式
-    listDateFormat = "01 月 02 日"
+    listDateFormat = "1 月 2 日"
     # 注意：请遵循格式 https://gohugo.io/functions/format/
 
     # 日期的位置
@@ -436,13 +428,13 @@ uglyURLs = false
     # 说明：left（左边）或 right（右边）
 
     # 是否按月份分隔列表
-    groupByMonth = false
+    groupByMonth = true
 
     # 是否开启十二生肖
     chineseZodiac = true
 
     # 是否翻译年份（仅对年份标题有效）
-    i18nYear = false
+    i18nYear = true
     # 是否翻译月份（仅对月份标题有效）
     i18nMonth = true
 
@@ -491,12 +483,14 @@ uglyURLs = false
 
 
     ######################################
-    # Dark Mode
+    # 深色模式
 
+    # 是否开启
     enableDarkMode = true
 
+    # 默认模式
     defaultTheme = "light"
-    # Note: light or dark
+    # 说明：light（浅色模式）或 dark（深色模式）
 
     # 是否隐藏模式切换开关
     hideThemeToggle = false
@@ -559,7 +553,7 @@ uglyURLs = false
 
     # 说明：仅在生产环境（production）下渲染
 
-    enableServiceWorker = true
+    enableServiceWorker = false
 
 
     ######################################
@@ -601,12 +595,12 @@ uglyURLs = false
     # 说明：仅在生产环境（production）下渲染
 
     # 是否开启（全局设置）
-    enableComments = true
+    enableComments = false
     # 说明：文章的 Front Matter 中的 `comments`
     #      的优先级高于此处
 
     # 直接加载评论，不需要手动点击按钮加载
-    autoLoadComments = true
+    autoLoadComments = false
 
     ## Disqus
     enableDisqus = false
@@ -614,64 +608,89 @@ uglyURLs = false
 
     ## Valine
     enableValine = false
-    valineAppId = "RDY0ucWSHI1zkD8ey1TqyGzc-gzGzoHsz"
-    valineAppKey = "NjoFLMARIjPS7DhUgcVGAVxI"
-    valinePlaceholder = "COMMENT HERE"
+    valineAppId = ""
+    valineAppKey = ""
+    valinePlaceholder = "Just go go"
     valinePath = ""
     valineAvatar = "mm"
     valineMeta = ["nick", "mail", "link"]
     valinePageSize = 10
-    valineLang = "cn"
+    valineLang = "zh-cn"
     valineVisitor = false
     valineHighlight = true
     valineAvatarForce = false
-    valineRecordIP = true
+    valineRecordIP = false
     valineServerURLs = ""
     valineEmojiCDN = ""
     valineEmojiMaps = {}
-    valineEnableQQ = true
+    valineEnableQQ = false
     valineRequiredFields = []
     # 说明：https://valine.js.org/
 
     ## Utterances
-    enableUtterances = true
-    utterancesRepo = "rxrw/rxrw.github.io"
-    utterancesIssueTerm = "og:title"
+    enableUtterances = false
+    utterancesRepo = ""
+    utterancesIssueTerm = "pathname"
     utterancesTheme = "github-light"
     utterancesThemeDark = "photon-dark"
-    utterancesLabel = "comment"
+    utterancesLabel = ""
     # 说明：https://utteranc.es/
-
 
     ## Gitalk
     enableGitalk = false
-    gitalkClientID = "61f7504307d235f57803"
-    gitalkClientSecret = "2d395684aa27cf015c528c45fcf9d3d1dfca6ac4"
-    gitalkRepo = "rxrw.github.io"
-    gitalkOwner = "rxrw"
-    gitalkAdmin = ["rxrw"]
-    gitalkLable = ["comment"]
-    gitalkDistractionFreeMode = false
-    gitalkPerPage = 10
+    gitalkClientID = "your_client_id"
+    gitalkClientSecret = "your_client_secret"
+    gitalkRepo = "your_repository"
+    gitalkOwner = "your_gitalk_owner"
+    gitalkAdmin = ["your_gitalk_admin"]
+
+    # 1. default (`location.href`)
+    # 2. pathname (`location.pathname`)
+    # 3. hash (hash_filepath)
+    # 4. custom:your_gitalk_id ("your_gitalk_id")
+    gitalkID = "pathname"
+
+    gitalkNumber = -1
+    gitalkLables = ["Gitalk"]
+
+    # 1. default (`document.title`)
+    # 2. custom:your_gitalk_title ("your_gitalk_title")
+    gitalkTitle = "default"
+
+    # 1. default (`location.href` + header.meta[description])
+    # 2. href (`location.href`)
+    # 3. custom:your_gitalk_body ("your_gitalk_body")
+    gitalkBody = "default"
+
+    # 1. default (`navigator.language || navigator.userLanguage`)
+    # 2. Support [en, zh-CN, zh-TW, es-ES, fr, ru, de, pl, ko, fa, ja]
     gitalkLanguage = "zh-CN"
+
+    gitalkPerPage = 10
+    gitalkDistractionFreeMode = false
     gitalkPagerDirection = "last"
-    gitalkCreateIssueManually = true
+    gitalkCreateIssueManually = false
     gitalkProxy = "https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"
+    gitalkStaggerDelayBy = 150
+    gitalkAppearAnimation = "accordionVertical"
+    gitalkEnterAnimation = "accordionVertical"
+    gitalkLeaveAnimation = "accordionVertical"
     gitalkEnableHotKey = true
     # 说明：https://github.com/gitalk/gitalk
+
 
     ######################################
     # Google Analytics
 
     # 说明：仅在生产环境（production）下渲染
 
-    enableGoogleAnalytics = true
+    enableGoogleAnalytics = false
 
     # 跟踪代码的类型
     trackingCodeType = "gtag"
     # 说明：gtag 或 analytics
 
-    trackingID = "G-VQN3HPV5FE"
+    trackingID = ""
 
 
     ######################################
@@ -685,7 +704,7 @@ uglyURLs = false
 
     # 说明：仅在生产环境（production）下渲染
 
-    googleAdClient = "ca-pub-3494628741098434"
+    googleAdClient = ""
 
     ## 自动广告
     enableGoogleAutoAds = false
@@ -695,7 +714,6 @@ uglyURLs = false
     googleAdSlot = ""
 
 
-
     ######################################
     # Yandex.Metrika
     # https://metrika.yandex.ru/
@@ -703,6 +721,7 @@ uglyURLs = false
     # 说明：仅在生产环境（production）下渲染
 
     yandexMetrikaId = ""
+
 
     ######################################
     # 文章设置
@@ -717,7 +736,7 @@ uglyURLs = false
     # 注意：只支持 HSL 颜色值
 
     # 文章的内容宽度
-    postWidth = 54
+    postWidth = 36
     # 说明：如果留空（""），则用 42 作为默认值
     #      单位：em
 
@@ -748,7 +767,8 @@ uglyURLs = false
     # 说明：仅对「文章摘要」和「普通页面」
     #      首页布局有效
 
-    postMetaDateFormat = "2006.01.02"
+    # 日期格式
+    postMetaDateFormat = "2006.1.2"
     # 注意：请遵循格式 https://gohugo.io/functions/format/
 
     # 是否显示发布时间
@@ -983,12 +1003,12 @@ uglyURLs = false
     enableParagraphIndent = true
 
     # 是否缩进第一段（全局设置）
-    indentFirstParagraph = true
+    indentFirstParagraph = false
     # 说明：文章的 Front Matter 中的 `indentFirstParagraph`
     #      的优先级高于此处
 
     # 分段样式（全局设置）
-    paragraphStyle = "indent"
+    paragraphStyle = "margin"
     # 说明：段间距式（margin）或段首缩排（indent）
     #      文章的 Front Matter 中的 `indent`
     #      的优先级高于此处
@@ -1023,7 +1043,7 @@ uglyURLs = false
     ## 大型小写（英文）
 
     # 是否开启（全局设置）
-    enableSmallCaps = true
+    enableSmallCaps = false
     # 说明：只会应用到分节标题和目录标题
     #      文章的 Front Matter 中的 `smallCaps`
     #      的优先级高于此处
@@ -1051,7 +1071,7 @@ uglyURLs = false
     enablePostCopyright = true
 
     # 是否显示（全局设置）
-    displayPostCopyright = false
+    displayPostCopyright = true
     # 说明：文章的 Front Matter 中的 `displayCopyright`
     #      的优先级高于此处
 
@@ -1063,7 +1083,7 @@ uglyURLs = false
     enablePostUpdatedBadge = true
 
     # 是否显示（全局设置）
-    displayUpdatedBadge = false
+    displayUpdatedBadge = true
     # 说明：文章的 Front Matter 中的 `badge`
     #      的优先级高于此处
 
@@ -1077,17 +1097,17 @@ uglyURLs = false
     # 文章的 Git 版本信息
 
     # 是否开启
-    enablePostGitInfo = true
+    enablePostGitInfo = false
 
     # 是否显示（全局设置）
-    displayPostGitInfo = true
+    displayPostGitInfo = false
     # 说明：文章的 Front Matter 中的 `gitinfo`
     #      的优先级高于此处
 
     # 仓库地址
-    repoURL = "https://github.com/rxrw/rxrw.github.io"
+    repoURL = ""
     # 编辑地址
-    repoEditURL = "https://github.com/rxrw/rxrw.github.io/edit/master"
+    repoEditURL = ""
 
     # Git 的图标
     gitIcon = "code-branch"
@@ -1104,14 +1124,14 @@ uglyURLs = false
     # 反馈链接的图标
     feedbackIcon = "question"
     # 反馈链接的文本
-    feedbackText = "Feedback?"
+    feedbackText = "Feedback"
 
     # 是否显示编辑链接
     displayEditLink = true
     # 编辑链接的图标
     editIcon = "edit"
     # 编辑链接的文本
-    editText = "Edit Me"
+    editText = "Edit Me?"
 
 
     ######################################
@@ -1129,10 +1149,10 @@ uglyURLs = false
 
     shareOnTwitter = true
     shareOnFacebook = true
-    shareOnLinkedIn = false
+    shareOnLinkedIn = true
     shareOnTelegram = true
     shareOnWeibo = true
-    shareOnDouban = false
+    shareOnDouban = true
     shareOnQQ = true
     shareOnQzone = true
 
@@ -1151,7 +1171,7 @@ uglyURLs = false
     #      的优先级高于此处
 
     # 相关文章数
-    relatedPostsNumber = 3
+    relatedPostsNumber = 5
 
     # 相关文章标题右边的图标
     relatedPostsIcon = "plus-circle"
@@ -1211,7 +1231,7 @@ uglyURLs = false
     displayBackToTopInHome = true
 
     # 是否在移动端显示
-    displayBackToTopOnMobile = true
+    displayBackToTopOnMobile = false
 
     # 按钮图标
     backToTopIcon = "arrow-up"
@@ -1237,7 +1257,7 @@ uglyURLs = false
     displaySiteCreatedYear = true
 
     # 年份与作者之间的图标，留空（""）则无
-    iconBetweenYearAndAuthor = "arrow-right"
+    iconBetweenYearAndAuthor = "heart"
     # 图标颜色
     iconColor = "#f06292"
     # 是否开启图标的跳动效果
@@ -1250,12 +1270,12 @@ uglyURLs = false
     displaySiteCopyright = true
 
     # 自定义页脚（支持 Markdown）
-    customFooter = "公安联网备案号申请中..."
+    customFooter = ""
 
     displayBusuanziSiteUVAndPV = false
-    busuanziSiteUVText = ""
+    busuanziSiteUVText = "本站访客数"
     busuanziSiteUVIcon = "user"
-    busuanziSitePVText = ""
+    busuanziSitePVText = "本站访问量"
     busuanziSitePVIcon = "eye"
     # 说明：仅在生产环境（production）下渲染
     #      文本或图标，留空（""）则无
@@ -1290,7 +1310,7 @@ uglyURLs = false
     # 是否开启竖直滚动
     enableOverflowY = true
     # 最大高度
-    maxHeight = 40
+    maxHeight = 20
     # 单位：em
 
     # 是否开启复制
@@ -1357,7 +1377,6 @@ uglyURLs = false
     # 说明：需要开启 `SearchIndex` 的输出
 
     enableLunrSearch = false
-
     # 说明：https://lunrjs.com/
 
 
@@ -1368,11 +1387,11 @@ uglyURLs = false
     #      次将生成的 algolia.json 文件上传到
     #      Algolia
 
-    enableAlgoliaSearch = true
+    enableAlgoliaSearch = false
 
-    algoliaAppId = "1G1YFB2ART"
-    algoliaApiKey = "cb17d0f6d1d71018132f6c59fcfd89fd"
-    algoliaIndexName = "rxrw"
+    algoliaAppId = ""
+    algoliaApiKey = ""
+    algoliaIndexName = ""
     # 说明：https://www.algolia.com/
 
 
@@ -1419,79 +1438,3 @@ uglyURLs = false
         valine = "/npm/valine@1.4.14/dist/Valine.min.js"
         busuanzi = "https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"
         utterances = "https://utteranc.es/client.js"
-
-
-# 中文
-[languages.zh]
-    languageName = "🇨🇳"
-    contentDir = "content/zh"
-    weight = 1
-
-# 英文
-[languages.en]
-    languageName = "🇺🇸"
-    contentDir = "content/en"
-    weight = 2
-    languageCode = "en-US"
-    hasCJKLanguage = false
-    copyright = "[RXRW.ME](https://rxrw.me)"
-[languages.en.menu]
-    [[languages.en.menu.main]]
-        url = "/en/"
-        weight = 1
-        pre = "internal"
-        name = "HOME"
-        post = "home"
-        identifier = "home"
-    # [[languages.en.menu.main]]
-    #     url = "/en/essay"
-    #     name = "ESSAY"
-    #     weight = 2
-    #     pre = "internal"
-    #     post = "grav"
-    #     identifier = "essay"
-    # [[languages.en.menu.main]]
-    #     url = "/en/life"
-    #     name = "LIFE"
-    #     weight = 3
-    #     pre = "internal"
-    #     post = "wpexplorer"
-    #     identifier = "life"
-    # [[languages.en.menu.main]]
-    #     url = "/en/tech"
-    #     name = "TECH"
-    #     weight = 4
-    #     pre = "internal"
-    #     post = "th"
-    #     identifier = "tech"
-    [[languages.en.menu.main]]
-        url = "/en/about/"
-        name = "ABOUT"
-        weight = 5
-        pre = "internal"
-        post = "user-circle"
-        identifier = "about"
-    [[languages.en.menu.main]]
-        weight = 6
-        identifier = "theme-switcher"
-    [[languages.en.menu.main]]
-        weight = 7
-        identifier = "lang-switcher"
-    [[menu.main]]
-        weight = 8
-        identifier = "search"
-        post = "search"
-[languages.en.params]
-    homePoetry = ["When the life is full of memories", "Time goes by like a walker", "Maybe in the future", "which named now is before"]
-    siteDescription = "Sunshine Like A Star"
-    listDateFormat = "January 2"
-    fontFamilyTitle = "'Amstelvar', serif"
-    fontFamilyHeadings = "'Amstelvar', serif"
-    fontFamilyBody = "'Amstelvar', serif"
-    fontsLink = "https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap"
-    lineHeight = 1.618
-    enableJustify = false
-    enableSmallCaps = true
-    enableEmphasisPoint = false
-    enableChinesePunctuationGlyphCorrection = false
-    # customFooter = "[RXRW.ME](https://rxrw.me)"

@@ -1,5 +1,5 @@
 {
-  "databaseID": "",
+  "databaseID": "你 Notion 数据库的 ID",
   "imagesLink": "/images",
   "imagesFolder": "static/images/",
   "contentFolder": "content/zh",
@@ -9,6 +9,7 @@
   "propertyCategories": "Category",
   "categoryMap": {
     "技术": "tech",
+    "随笔": "essay",
     "关于": "about"
   },
   "filterProp": "Status",
